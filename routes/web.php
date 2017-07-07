@@ -64,6 +64,11 @@ Route::get('/contact', function () {
 });
 
 
+
+
+
+Route::middleware(['auth'])->group(function(){
+
 Route::get('/admin', function () {
     return view('admin.show.admin');
 });
@@ -179,3 +184,12 @@ Route::delete('/admin/heritage/{heritage}','Admin\heritagecontroller@destroy' );
 Route::put('/admin/heritage/{heritage}','Admin\heritagecontroller@update' )->name('heritage.update');
 
 Route::get('/admin/heritage/{heritage}','Admin\heritagecontroller@edit' )->name('heritage.edit');
+    
+
+    });
+
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
